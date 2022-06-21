@@ -1,0 +1,365 @@
+{
+	"info": {
+		"_postman_id": "1b6b943c-ce16-46ad-9796-1936142642d4",
+		"name": "API Test For Get Employee Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20782127"
+	},
+	"item": [
+		{
+			"name": "Get All Employee Automation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var respBody= JSON.parse(responseBody);\r",
+							"console.log(respBody.data.length);\r",
+							"console.log(respBody.data[1]);\r",
+							"pm.test(\"Status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is Success\", function(){\r",
+							"        pm.expect(respBody.status).\r",
+							"        to.eql(\"success\");\r",
+							"    });\r",
+							"\r",
+							"for(var i = 0; i < respBody.data.length; i++)\r",
+							"{\r",
+							"    pm.test(\"Status code is 200\", function(){\r",
+							"        pm.expect(respBody.data[i]).\r",
+							"        to.include.keys(\"id\").\r",
+							"        to.include.keys(\"employee_name\").\r",
+							"        to.include.keys(\"employee_salary\").\r",
+							"        to.include.keys(\"employee_age\").\r",
+							"        to.include.keys(\"profile_image\");\r",
+							"    });\r",
+							"}\r",
+							"\r",
+							"pm.test(\"check header content-Encoding\", function(){\r",
+							"    var respBody= JSON.parse(responseBody);\r",
+							"    pm.response.to.be.header(\"Content-Encoding\", \"gzip\")\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content type is present\", function () {\r",
+							"    pm.response.to.be.header(\"Content-Type\", \"application/json\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://dummy.restapiexample.com/api/v1/employees",
+					"protocol": "http",
+					"host": [
+						"dummy",
+						"restapiexample",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Employee Automation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var respBody = JSON.parse(responseBody);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is Success\", function () {\r",
+							"    pm.expect(respBody.status).\r",
+							"        to.eql(\"success\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify All Attritbutes\", function () {\r",
+							"    pm.expect(respBody.data).\r",
+							"        to.include.keys(\"name\").\r",
+							"        to.include.keys(\"salary\").\r",
+							"        to.include.keys(\"age\").\r",
+							"        to.include.keys(\"id\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify All Attritbutes\", function () {\r",
+							"    pm.expect(respBody.data.name).\r",
+							"        to.eql(\"test_gk_unique\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify All Attritbutes\", function () {\r",
+							"    pm.expect(respBody.data.salary).\r",
+							"        to.eql(\"123\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify All Attritbutes\", function () {\r",
+							"    pm.expect(respBody.data.age).\r",
+							"        to.eql(\"23\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify message\", function () {\r",
+							"    pm.expect(respBody.message).\r",
+							"        to.eql(\"Successfully! Record has been added.\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"test_gk_unique\",\"salary\":\"123\",\"age\":\"23\"} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://dummy.restapiexample.com/api/v1/create",
+					"protocol": "http",
+					"host": [
+						"dummy",
+						"restapiexample",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Employee Automation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var respBody = JSON.parse(responseBody);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is Success\", function () {\r",
+							"    pm.expect(respBody.status).\r",
+							"        to.eql(\"success\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify message\", function () {\r",
+							"    pm.expect(respBody.message).\r",
+							"        to.eql(\"Successfully! Record has been fetched.\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://dummy.restapiexample.com/api/v1/employee/8204",
+					"protocol": "http",
+					"host": [
+						"dummy",
+						"restapiexample",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"employee",
+						"8204"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Automate Put Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var respBody = JSON.parse(responseBody);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify All Attritbutes\", function () {\r",
+							"    pm.expect(respBody.data).\r",
+							"        to.include.keys(\"name\").\r",
+							"        to.include.keys(\"salary\").\r",
+							"        to.include.keys(\"age\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify All Attritbutes\", function () {\r",
+							"    pm.expect(respBody.data.name).\r",
+							"        to.eql(\"test_gk_unique\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify All Attritbutes\", function () {\r",
+							"    pm.expect(respBody.data.salary).\r",
+							"        to.eql(\"123\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify All Attritbutes\", function () {\r",
+							"    pm.expect(respBody.data.age).\r",
+							"        to.eql(\"23\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is Success\", function () {\r",
+							"    pm.expect(respBody.status).\r",
+							"        to.eql(\"success\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify message\", function () {\r",
+							"    pm.expect(respBody.message).\r",
+							"        to.eql(\"Successfully! Record has been updated.\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"test_gk_unique\",\"salary\":\"123\",\"age\":\"23\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://dummy.restapiexample.com/api/v1/update/2982",
+					"protocol": "http",
+					"host": [
+						"dummy",
+						"restapiexample",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"update",
+						"2982"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Automate Delete Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var respBody = JSON.parse(responseBody);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify All Attritbutes\", function () {\r",
+							"    pm.expect(respBody.data).\r",
+							"        to.include.keys(\"name\").\r",
+							"        to.include.keys(\"salary\").\r",
+							"        to.include.keys(\"age\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is Success\", function () {\r",
+							"    pm.expect(respBody.status).\r",
+							"        to.eql(\"success\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify message\", function () {\r",
+							"    pm.expect(respBody.message).\r",
+							"        to.eql(\"Successfully! Record has been updated.\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"test_gk_unique\",\"salary\":\"123\",\"age\":\"23\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://dummy.restapiexample.com/api/v1/update/2982",
+					"protocol": "http",
+					"host": [
+						"dummy",
+						"restapiexample",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"update",
+						"2982"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
