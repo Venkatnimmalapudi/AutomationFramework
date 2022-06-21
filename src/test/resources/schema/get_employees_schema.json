@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string"
+    },
+    "data": {
+      "type": "array",
+      "items" : [
+        {
+          "type": "object",
+          "properties": {
+            "id": {"type": "number"},
+            "employee_name": {"type": "string"},
+            "employee_salary": {"type": "number"},
+            "employee_age" : {"type": "number"},
+            "profile_image" : {"type": "string"}
+          },
+          "required": ["id", "employee_age", "employee_name", "employee_salary"]
+        }
+      ]
+    },
+
+    "message": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "status",
+    "data",
+    "message"
+  ]
+}
