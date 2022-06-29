@@ -30,6 +30,7 @@ public class FashionProductTests extends BaseTest {
         homePage.createAccountWithEmail(email);
         homePage.fillAccountDetails(name, surName);
         homePage.submitAccountDetailsAndValidate(name, surName);
+        //adding
     }
 
     @Test(groups = {"logInTest", "webui"})
