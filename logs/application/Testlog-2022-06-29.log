@@ -1,0 +1,5 @@
+20:54:30.551 [main] DEBUG com.webui.helpers.PropertyHelper - String Id is : order_confirmation_page
+20:54:30.555 [main] DEBUG com.webui.helpers.PropertyHelper - String value returned is : ?controller=order-confirmation
+20:54:30.555 [main] DEBUG com.webui.helpers.PropertyHelper - String Id is : base_url
+20:54:30.555 [main] DEBUG com.webui.helpers.PropertyHelper - String value returned is : http://automationpractice.com
+20:54:30.556 [main] DEBUG com.webui.helpers.PropertyHelper - String Id is : home_page

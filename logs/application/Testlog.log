@@ -1,0 +1,5 @@
+20:54:30.556 [main] DEBUG com.webui.helpers.PropertyHelper - String value returned is : /index.php
+20:54:30.559 [main] DEBUG com.webui.pages.BasePage - Loading url is : http://automationpractice.com/index.php
+20:54:36.983 [main] DEBUG com.webui.pages.BasePage - login details
+20:54:42.136 [main] DEBUG com.webui.pages.CheckoutPage - Click on Women Category and Select an item submit it
+20:54:42.705 [main] DEBUG com.webui.pages.CheckoutPage - xpath is ://a[@title='Faded Short Sleeve T-shirts' and @class='product-name']
