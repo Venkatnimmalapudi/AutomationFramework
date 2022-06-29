@@ -72,7 +72,6 @@ public class CheckoutPage extends BasePage {
 
     public void makeOrderPaymentAndConfirm() {
         logger.debug("make payment of the order");
-        //wait.until(ExpectedConditions.visibilityOf(closeElement)).click();
         wait.until(ExpectedConditions.visibilityOf(bankWireWebElement)).click();
         wait.until(ExpectedConditions.visibilityOf(cartButtonWebElement)).click();
         final WebElement heading = wait.until(ExpectedConditions.visibilityOf(h1Element));
