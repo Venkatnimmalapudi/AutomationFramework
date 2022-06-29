@@ -20,7 +20,7 @@ public class FashionProductTests extends BaseTest {
         super();
     }
 
-    @Test(groups = {"signInTest", "webui"})
+    @Test(groups = {"signInTest", "webui"}, priority = 1)
     public void signInTest() throws Exception {
         final HomePage homePage = new HomePage(driver.get(), wait.get());
         String timestamp = String.valueOf(new Date().getTime());
@@ -33,7 +33,7 @@ public class FashionProductTests extends BaseTest {
         //adding
     }
 
-    @Test(groups = {"logInTest", "webui"})
+    @Test(groups = {"logInTest", "webui"}, priority = 2)
     public void logInTest() throws Exception {
         final LoginPage loginPage = new LoginPage(driver.get(), wait.get());
         loginPage.loadBasePageUrl();
@@ -41,7 +41,7 @@ public class FashionProductTests extends BaseTest {
         loginPage.validateLogin("test test");
     }
 
-    @Test(groups = {"checkoutTest", "webui"}, dataProviderClass = FashionProductDataprovider.class, dataProvider = "fetchData")
+    @Test(groups = {"checkoutTest", "webui"}, priority =3,dataProviderClass = FashionProductDataprovider.class, dataProvider = "fetchData")
     public void checkoutTest(final FashionProduct fashionProduct) throws Exception {
         final CheckoutPage checkoutPage = new CheckoutPage(driver.get(), wait.get());
         checkoutPage.loadBasePageUrl();
