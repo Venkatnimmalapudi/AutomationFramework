@@ -1,6 +1,6 @@
 Sample Framework to both API and WebUI.
 
-- Uses JAVA 11
+- Uses JAVA 18
 - Uses TestNG for test execution and reports
 - Uses Maven build tool for building dependencies and enable running tests from command line.
 - Log4j2 for logging.
